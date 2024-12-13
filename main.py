@@ -15,18 +15,17 @@ def main():
     dt = 0
     # GUI Window
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    
+
     # Event loop
     while True:
         for event in pygame.event.get():
+            player.update(dt)
             if event.type == pygame.QUIT:
                 return
         screen.fill(BLACK)
         player.draw(screen)
         pygame.display.flip()
-        # for event in pygame.event.get():
-            # print(event)
-        
+
         dt = clock.tick(60) / 1000
     
 if __name__ == "__main__":
