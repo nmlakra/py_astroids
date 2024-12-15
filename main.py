@@ -1,4 +1,6 @@
 import pygame
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 from player import Player
 from constants import *
 
@@ -7,9 +9,21 @@ def main():
     # Initializing pygame
     pygame.init()
 
+    # Creating Groups for sprite management
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
 
+    ## Asteroids ##
+    # Adding Asteroid class to the sprite groups
+    Asteroid.containers = (asteroids, updatable, drawable)
+
+    ## Asteroid Field ##
+    AsteroidField.containers = updatable
+    astro_field = AsteroidField()
+
+    ## Player ##
+    # Adding Player class to the sprite groups
     Player.containers = (updatable, drawable)
     x_player_spwan_location = SCREEN_WIDTH / 2
     y_player_spwan_location = SCREEN_HEIGHT / 2
