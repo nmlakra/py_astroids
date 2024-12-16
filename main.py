@@ -59,6 +59,11 @@ def main():
             drawable_object.draw(screen)
             
         for asteroid in asteroids:
+            for bullet in shots:
+                if asteroid.collision_check(bullet):
+                    asteroid.split()
+                    bullet.kill()
+                    
             if asteroid.collision_check(player):
                 text = font.render("GAME OVER", True, WHITE)
                 screen.blit(text, (x_player_spwan_location, y_player_spwan_location))
